@@ -1,4 +1,141 @@
-h1{
-  border-color: #d3e644;
-  border-style: dashed;
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #ccc;
+}
+
+article {
+  width: 210mm;
+  height: 297mm;
+  margin: 20px auto;
+  position: relative;
+  background-color: white; /* adds in the white background */
+  background-image:
+  linear-gradient(      /* adds in the gradient background */
+    to bottom,
+    rgba(0, 0, 0, 0.2) 20mm,
+    rgba(0, 0, 0, 0) 30mm,
+    rgba(0, 0, 0, 0) 267mm,
+    rgba(0, 0, 0, 0.2) 297mm
+  ),
+    url('/img/bottom-image.png'),
+    url('/img/top-image.png');
+  background-position:
+    top center,
+    bottom center;
+  background-repeat: no-repeat, no-repeat;
+  border-top: 1mm solid #5d6063;
+  border-bottom: 1mm solid #5d6063;
+  
+}
+
+
+
+address {
+  position: absolute;
+  bottom: 7mm;
+  right: 20mm;
+}
+
+h1 {
+  position: absolute;
+  top: 12mm;
+  left: 20mm;
+  width: 128px;
+  height: 128px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-align: center;
+  padding: 44px 0;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  background-image: url('/img/logo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /*filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.3));*/
+  border-radius: 64px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+
+}
+
+/* Two-column layout */
+.column-container {
+  position: absolute;
+  top: 250px;
+  left: 20mm;
+  right: 20mm;
+  bottom: 40mm;
+  display: flex;
+  gap: 20px;
+}
+
+.column {
+  flex: 1;
+  padding: 10px 0;
+}
+
+.column p {
+  margin-bottom: 15px;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+.form-container {
+  position: absolute;
+  bottom: 80mm;
+  right: 40mm;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.radio-group {
+  margin-bottom: 8px;
+}
+
+.radio-group label {
+  margin-left: 5px;
+}
+
+#submitButton {
+  margin-top: 10px;
+  padding: 5px 15px;
+  background-color: #5D6063;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#submitButton:hover {
+  background-color: #4a4d50;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/*Fall back for browsers that don't support multiple backgrounds*/
+@supports not (background-image: linear-gradient(black, white), url('/img/top-image.png'), url('/img/bottom-image.png')) {
+  article {
+    background-image: url('/img/top-image.png');
+    background-position: top center;
+    background-repeat: no-repeat;
+  }
 }

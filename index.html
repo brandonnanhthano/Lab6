@@ -1,79 +1,61 @@
-<!doctype html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <title>Hello World!</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="shortcut icon" href="img/favicon.ico">
-</head>
-
-<body>
-  <h1>HTML Rocks!</h1>
-  <p>
-    <button  onclick="helloWorld()">Prints Hello World to the Developer console</button>
-  </p>
-  <hr>
-  <form id="addForm">
-    <label for="num1">Number 1:</label>
-    <input type="number" id="num1" name="num1" required>
-    <br>
-    <label for="num2">Number 2:</label>
-    <input type="number" id="num2" name="num2" required>
-    <br>
-    <button type="submit">Add Numbers</button>
-  </form>
-
-  <label id="result">Result:</label>
-
-  <hr>
-
-  <button id="jokeButton">Get a Random Joke</button>
-  <p id="joke"></p>
-
-  <script type="module" script="js/main.js">
-    import {helloWorld, add, fetchRandomJoke} from './js/main.js';
-
-    // This shows how to assign a function to the window object
-    // so that it can be called from the browser console
-    window.helloWorld = helloWorld;
-
-    // This shows how to add an event listener to a button in the HTML
-    // and call a function when the button is clicked
-    const form = document.getElementById('addForm');
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const num1 = parseFloat(document.getElementById('num1').value);
-      const num2 = parseFloat(document.getElementById('num2').value);
-      try{
-        const result = add(num1, num2);
-        document.getElementById('result').textContent = `Result: ${result}`;
-      }catch(e){
-        console.error(e);
-        document.getElementById('result').textContent = `Error: ${e.message}`;
-      }
-
-    });
-
-    // this shows how to add an event listener to a button in the HTML
-    // that calls a function that fetches a random joke from an API
-    // and displays it on the page
-    const jokebtn = document.getElementById('jokeButton');
-    const jokeresult = document.getElementById('joke');
-    jokebtn.addEventListener('click', async () => {
-      try {
-        jokeresult.textContent = 'Loading...';
-        const joke = await fetchRandomJoke();
-        document.getElementById('joke').textContent = joke;
-      } catch (e) {
-        console.error(e);
-        document.getElementById('joke').textContent = `Error: ${e.message}`;
-      }
-    });
-  </script>
-
-</body>
-
-</html>
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Fancy letterheaded paper</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <main>
+      <article aria-labelledby="company-name">
+        <h1 id="company-name">Awesome<br>Company</h1>
+        
+        <div class="column-container" role="region" aria-label="Company information">
+          <div class="column">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget sapien vel odio feugiat fringilla. Donec malesuada, nisl vel facilisis tincidunt, turpis nulla scelerisque neque, nec tincidunt libero arcu quis nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+            <p>Suspendisse potenti. In id enim vitae nisl faucibus sollicitudin. Cras ullamcorper, ligula id varius volutpat, massa enim tincidunt nisi, nec tincidunt nulla sem et libero. Suspendisse semper mauris in nulla tempus, vel tincidunt nisl hendrerit.</p>
+          </div>
+          
+          <div class="column">
+            <p>Curabitur vel congue tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam dictum tellus nec erat lobortis, in euismod tortor tincidunt. Quisque imperdiet lacus vel ornare pulvinar.</p>
+            <p>Praesent aliquam risus eu libero tempor, vel ultrices odio congue. Donec sit amet aliquam ipsum. Vestibulum rutrum lorem odio, a tempus risus rutrum vel. Vivamus dictum vehicula eros, vel iaculis magna faucibus id.</p>
+          </div>
+        </div>
+        
+        <div class="form-container">
+          <form id="radioForm" aria-labelledby="form-heading">
+            <h2 id="form-heading" class="visually-hidden">Season Preference Form</h2>
+            <fieldset>
+              <legend>Select your preferred season:</legend>
+              <div class="radio-group">
+                <input type="radio" id="Winter" name="options" value="Winter was selected" tabindex="1">
+                <label for="Winter">Winter</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" id="Summer" name="options" value="Summer selected" tabindex="2">
+                <label for="Summer">Summer</label>
+              </div>
+              <div class="radio-group">
+                <input type="radio" id="Fall" name="options" value="Fall was selected" checked tabindex="3">
+                <label for="Fall">Fall</label>
+              </div>
+              <button type="button" id="submitButton" tabindex="4" aria-label="Submit season selection">Submit Selection</button>
+            </fieldset>
+          </form>
+        </div>
+        
+        <address aria-label="Company contact information">
+          <p>The Awesome Company</p>
+          <p>102-112 Frail Bend Bridge<br>
+           The Dwindlings<br>
+           Little Hornet<br>
+           HX3 9ZQ<br>
+           UK</p>
+        </address>
+      </article>
+    </main>
+    <div id="liveAnnouncer" class="visually-hidden" aria-live="polite"></div>
+    <script src="/js/main.js"></script>
+  </body>
+  </html>
